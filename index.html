@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Will Pay The Bill Today? 💰</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            margin: 100px auto;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 32px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #fff;
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        #calculatingEmoji {
+            font-size: 36px;
+            display: none;
+            animation: spin 2s infinite linear;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Who Will Pay The Bill Today? 💰</h1>
+        <p>Enter a list of names separated by commas:</p>
+        <input type="text" id="namesInput">
+        <br><br>
+        <button onclick="selectRandomName()">Select Random Name</button>
+        <div id="calculatingEmoji">⌛</div>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function selectRandomName() {
+            const namesInput = document.getElementById("namesInput").value;
+            const names = namesInput.split(",");
+            const numItems = names.length;
+            const randomIndex = Math.floor(Math.random() * numItems);
+            const personSelected = names[randomIndex];
+            const resultElement = document.getElementById("result");
+            const calculatingEmoji = document.getElementById("calculatingEmoji");
+
+            calculatingEmoji.style.display = "inline-block";
+            setTimeout(() => {
+                calculatingEmoji.style.display = "none";
+                resultElement.textContent = personSelected + " will pay the bill today! 🍽️";
+                resultElement.style.display = "block";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
